@@ -1,14 +1,27 @@
 Vagrant.configure("2") do |config|
-    config.vm.define "Rocky8" do |rocky|
-    rocky.vm.box = "generic/rocky8"
-    rocky.vm.hostname = 'rocky'
-    rocky.vm.network "public_network", ip: "192.168.3.198"
-    rocky.vm.provision "shell", inline: <<-SHELL
-       yum install httpd mod_ssl -y
-    SHELL
-    rocky.vm.provider :virtualbox do |v|
-      v.customize ["modifyvm", :id, "--memory", 512]
-      v.customize ["modifyvm", :id, "--name", "rocky"]
-    end
-  end
+        config.vm.define "Rocky8" do |rocky|
+        rocky.vm.box = "generic/rocky8"
+        rocky.vm.hostname = 'rocky'
+        rocky.vm.network "public_network", ip: "192.168.3.198"
+        rocky.vm.provision "shell", inline: <<-SHELL
+           sudo yum install httpd mod_ssl -y
+        SHELL
+        rocky.vm.provider :virtualbox do |v|
+          v.customize ["modifyvm", :id, "--memory", 512]
+          v.customize ["modifyvm", :id, "--name", "Rocky"]
+        end
+     end
+        config.vm.define "Debian" do |debian|
+        debian.vm.box = "debian/buster64"
+        debian.vm.hostname = 'Debian'
+        debian.vm.network "public_network", ip: "192.168.3.199"
+
+        debian.vm.provision "shell", inline: <<-SHELL
+        sudo apt-get install apache2 mod_ssl -y
+        SHELL
+        debian.vm.provider :virtualbox do |v|
+        v.customize ["modifyvm", :id, "--memory", 512]
+        v.customize ["modifyvm", :id, "--name", "Debian"]
+        end 
+     end
 end
