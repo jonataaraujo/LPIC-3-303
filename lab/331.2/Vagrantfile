@@ -4,7 +4,7 @@ Vagrant.configure("2") do |config|
         rocky.vm.hostname = 'rocky'
         rocky.vm.network "public_network", ip: "192.168.3.198"
         rocky.vm.provision "shell", inline: <<-SHELL
-                sudo yum install httpd mod_ssl -y
+                sudo yum install tmux httpd mod_ssl -y
         SHELL
         rocky.vm.provider :virtualbox do |v|
           v.customize ["modifyvm", :id, "--memory", 512]
@@ -16,7 +16,8 @@ Vagrant.configure("2") do |config|
         debian.vm.hostname = 'Debian'
         debian.vm.network "public_network", ip: "192.168.3.199"
         debian.vm.provision "shell", inline: <<-SHELL
-                sudo apt-get install apache2 mod_ssl -y
+                sudo apt-get --allow-releaseinfo-change update
+                sudo apt-get install tmux apache2 -y
         SHELL
         debian.vm.provider :virtualbox do |v|
         v.customize ["modifyvm", :id, "--memory", 512]
