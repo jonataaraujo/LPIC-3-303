@@ -1,6 +1,7 @@
 # Overview
-A certificação LPIC-3 Security é o culminar do programa de certificação profissional do Linux Professional Institute (LPI), é projetado para o nível empresarial Linux, LPIC-3 representa o mais alto nível de certificação.
-Essa certificação abrange a administração de sistemas Linux em toda a empresa, com ênfase na segurança.
+A certificação LPIC-3 Security é o culminar do programa de certificação profissional do Linux Professional Institute (LPI), é projetado para o nível empresarial Linux, representa o mais alto nível de certificação.
+
+Essa certificação abrange a administração de sistemas Linux com ênfase na segurança.
 
 
 # Tópico 331 - Criptografia
